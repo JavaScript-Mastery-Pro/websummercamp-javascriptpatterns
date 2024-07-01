@@ -1,0 +1,1 @@
+// You are building a sorting algorithm visualization tool that allows users to choose between different sorting algorithms such as bubble sort, merge sort, and quick sort. Implement a system to encapsulate each sorting algorithm and allow users to switch between them dynamically.

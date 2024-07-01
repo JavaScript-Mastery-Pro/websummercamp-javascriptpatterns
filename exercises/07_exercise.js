@@ -1,0 +1,1 @@
+// You are developing a weather monitoring application that needs to notify various components whenever the weather conditions change. Implement a system to allow components to subscribe to weather updates and react accordingly.

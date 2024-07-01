@@ -1,0 +1,1 @@
+// You have an existing class that fetches data from a REST API in a specific format. However, you need to integrate it with a new component that expects the data in a different format. Implement a system to adapt the existing class to work with the new component.
