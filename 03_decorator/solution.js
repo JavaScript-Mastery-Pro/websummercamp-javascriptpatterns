@@ -1,82 +1,40 @@
-class Pizza {
-  constructor() {
-    this.description = "Plain Pizza";
+const BASIC_PIZZA_PRICE = 10;
+const CHEESE_TOPPING_PRICE = 2;
+const PEPPERONI_TOPPING_PRICE = 3;
+const HOT_SAUCE_TOPPING_PRICE = 1;
+
+// Basic pizza price function
+const basicPizzaPrice = () => BASIC_PIZZA_PRICE;
+
+// Topping decorators as functions
+const addCheese = (price) => price + CHEESE_TOPPING_PRICE;
+const addPepperoni = (price) => price + PEPPERONI_TOPPING_PRICE;
+const addHotSauce = (price) => price + HOT_SAUCE_TOPPING_PRICE;
+
+// Function to apply toppings
+const applyTopping = (price, topping) => {
+  switch (topping) {
+    case "cheese":
+      return addCheese(price);
+    case "pepperoni":
+      return addPepperoni(price);
+    case "hot_sauce":
+      return addHotSauce(price);
+    default:
+      return price;
   }
+};
 
-  getPrice() {
-    return 10;
-  }
+const createPizza = (toppings = []) => {
+  return toppings.reduce(applyTopping, basicPizzaPrice());
+};
 
-  getDescription() {
-    return this.description;
-  }
-}
+const basicPizza = createPizza(); // Basic pizza with no toppings
+const pizzaWithCheese = createPizza(["cheese"]);
+const pizzaWithPepperoni = createPizza(["pepperoni"]);
+const pizzaWithBoth = createPizza(["cheese", "pepperoni"]);
 
-class ToppingDecorator {
-  constructor(pizza) {
-    this.pizza = pizza;
-  }
-
-  getPrice() {
-    return this.pizza.getPrice();
-  }
-
-  getDescription() {
-    return this.pizza.getDescription();
-  }
-}
-
-class Cheese extends ToppingDecorator {
-  constructor(pizza) {
-    super(pizza);
-    this.description = "Cheese";
-  }
-
-  getPrice() {
-    return this.pizza.getPrice() + 2;
-  }
-
-  getDescription() {
-    return `${this.pizza.getDescription()}, ${this.description}`;
-  }
-}
-
-class Pepperoni extends ToppingDecorator {
-  constructor(pizza) {
-    super(pizza);
-    this.description = "Pepperoni";
-  }
-
-  getPrice() {
-    return this.pizza.getPrice() + 3;
-  }
-
-  getDescription() {
-    return `${this.pizza.getDescription()}, ${this.description}`;
-  }
-}
-
-// Create a custom pizza with various toppings
-let customPizza = new Pizza();
-customPizza = new Cheese(customPizza);
-customPizza = new Pepperoni(customPizza);
-
-console.log(
-  "Custom Pizza: ",
-  customPizza.getDescription(),
-  "Price:",
-  customPizza.getPrice()
-);
-
-// Create another custom pizza with different toppings
-let anotherCustomPizza = new Pizza();
-anotherCustomPizza = new Pepperoni(anotherCustomPizza);
-anotherCustomPizza = new Pepperoni(anotherCustomPizza);
-anotherCustomPizza = new Cheese(anotherCustomPizza);
-
-console.log(
-  "Another Custom Pizza: ",
-  anotherCustomPizza.getDescription(),
-  "Price:",
-  anotherCustomPizza.getPrice()
-);
+console.log("Basic pizza price:", basicPizza); // Output: 10
+console.log("Pizza with cheese price:", pizzaWithCheese); // Output: 12
+console.log("Pizza with pepperoni price:", pizzaWithPepperoni); // Output: 13
+console.log("Pizza with cheese and pepperoni price:", pizzaWithBoth); // Output: 15

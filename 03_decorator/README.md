@@ -1,43 +1,31 @@
-### 1. Approach using Constants and Functions
+### 1. Pros of using a Decorator pattern
 
-**Pros:**
+- **Modularity and Flexibility:**
+  - Defines separate functions for each topping.
+  - Easy to add or remove toppings without modifying core logic.
+  - Allows flexible and dynamic pizza creation.
 
-- Readable and easy to understand, especially for developers familiar with procedural programming.
-- Straightforward pricing logic using constants and a switch statement.
+- **Extensibility:**
+  - Adding a new topping is simple with a new function.
+  - Minimal changes needed for new toppings.
 
-**Cons:**
+- **Use of Functional Programming:**
+  - Leverages principles like higher-order functions and reduce method.
+  - More declarative and concise.
+  - Easier to understand and maintain.
 
-- Limited flexibility and extensibility. Adding new toppings or modifying pricing logic may require directly modifying the `createPizza` function.
-- Code may become repetitive or tightly coupled when handling multiple combinations of toppings.
+- **Adherence to the Open/Closed Principle:**
+  - Open for extension (easy to add new toppings).
+  - Closed for modification (existing code doesn't change).
 
-### 2. Approach using Classes and Decorators
+- **Improved Readability:**
+  - More readable and easier to follow.
+  - Separation of concerns and descriptive function names.
 
-**Pros:**
+- **Better Abstraction:**
+  - Abstracts topping application into a higher-order function.
+  - Hides complexity, making high-level logic clearer.
 
-- Object-oriented design promotes code organization and reusability.
-- Decorator pattern allows for easy addition of new toppings by creating new decorator classes.
-
-**Cons:**
-
-- Requires a deeper understanding of object-oriented principles and design patterns.
-- Modifying existing toppings or the base pizza may require changes to multiple classes, potentially violating the Open/Closed Principle.
-- Requires defining multiple classes for each type of topping, which might be overkill for small projects or simple use cases.
-
-### 3. Approach using Higher-order Functions
-
-**Pros:**
-
-- Promotes composability, separation of concerns, and immutability.
-- Functional programming techniques make the code easier to reason about and maintain.
-- Adding new toppings involves creating new higher-order functions, allowing for independent modification without altering existing code.
-
-**Cons:**
-
-- May be less familiar to developers not accustomed to functional programming concepts.
-- Functional programming techniques like function composition may introduce a small performance cost compared to direct method calls.
-
-### Which is Better
-
-The approach using Higher-order Functions (Approach 3) is better overall. It offers improved readability, flexibility, and extensibility compared to the other approaches.
-
-It promotes functional programming principles, which align well with modern JavaScript development practices. Additionally, it provides a clear separation of concerns and encourages a more declarative and concise coding style.
+- **Summary:**
+  - Offers a flexible, extensible, and maintainable approach.
+  - Adheres to design principles and patterns.

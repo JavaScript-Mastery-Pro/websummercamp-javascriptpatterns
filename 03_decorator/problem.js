@@ -1,21 +1,23 @@
-// Define Constants for Pizza Types and Toppings
 const BASIC_PIZZA_PRICE = 10;
 const CHEESE_TOPPING_PRICE = 2;
 const PEPPERONI_TOPPING_PRICE = 3;
+const HOT_SAUCE_TOPPING_PRICE = 1;
 
-// Define Function to Create Pizzas with Toppings
 function createPizza(toppings) {
   let price = BASIC_PIZZA_PRICE;
 
   switch (toppings) {
     case "cheese":
-      price += 2;
+      price += CHEESE_TOPPING_PRICE;
       break;
     case "pepperoni":
-      price += 3;
+      price += PEPPERONI_TOPPING_PRICE;
       break;
     case "cheese_and_pepperoni":
-      price += 5;
+      price += CHEESE_TOPPING_PRICE + PEPPERONI_TOPPING_PRICE;
+      break;
+    case "hot_sauce":
+      price += HOT_SAUCE_TOPPING_PRICE;
       break;
     default:
       // Basic pizza with no toppings
@@ -23,7 +25,7 @@ function createPizza(toppings) {
   }
 
   return {
-    price: price,
+    price
   };
 }
 

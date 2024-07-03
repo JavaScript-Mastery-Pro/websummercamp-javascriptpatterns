@@ -1,50 +1,33 @@
-// Define compression strategy interface
-class CompressionStrategy {
-  compress(data) {
-    throw new Error("compress method must be implemented");
-  }
-}
+const zipCompressionStrategy = (data) => {
+  console.log("Compressing using ZIP algorithm");
 
-// Concrete strategy: ZIP compression
-class ZIPCompressionStrategy extends CompressionStrategy {
-  compress(data) {
-    console.log("Compressing using ZIP algorithm");
-    // Implementation logic for ZIP compression
-    return "Compressed using ZIP";
-  }
-}
+  return "Compressed using ZIP";
+};
 
-// Concrete strategy: GZIP compression
-class GZIPCompressionStrategy extends CompressionStrategy {
-  compress(data) {
-    console.log("Compressing using GZIP algorithm");
-    // Implementation logic for GZIP compression
-    return "Compressed using GZIP";
-  }
-}
+const gzipCompressionStrategy = (data) => {
+  console.log("Compressing using GZIP algorithm");
 
-// Context class that uses a compression strategy
-class CompressionContext {
-  constructor(strategy) {
-    this.strategy = strategy;
-  }
+  return "Compressed using GZIP";
+};
 
-  setStrategy(strategy) {
-    this.strategy = strategy;
-  }
+// Context function that sets strategy and compresses data
+const compressionContext = (strategy) => {
+  const setStrategy = (newStrategy) => {
+    strategy = newStrategy;
+  };
 
-  compress(data) {
-    return this.strategy.compress(data);
-  }
-}
+  const compress = (data) => {
+    return strategy(data);
+  };
+
+  return { setStrategy, compress };
+};
 
 // Example usage
 const data = "Lorem ipsum dolor sit amet";
-const zipStrategy = new ZIPCompressionStrategy();
-const gzipStrategy = new GZIPCompressionStrategy();
 
-const context = new CompressionContext(zipStrategy);
+const context = compressionContext(zipCompressionStrategy);
 console.log(context.compress(data)); // Output: Compressed using ZIP
 
-context.setStrategy(gzipStrategy);
+context.setStrategy(gzipCompressionStrategy);
 console.log(context.compress(data)); // Output: Compressed using GZIP

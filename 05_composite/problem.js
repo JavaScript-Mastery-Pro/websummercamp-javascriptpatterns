@@ -30,6 +30,7 @@ function getPermissions(role) {
   }
 
   collectPermissions(role);
+  
   return Array.from(allPermissions);
 }
 
