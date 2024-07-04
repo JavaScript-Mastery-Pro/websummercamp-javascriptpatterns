@@ -6,13 +6,17 @@ const processPaymentWithStripe = (amount) => {
   console.log(`Processing ${amount} through Stripe`);
 };
 
+const processPaymentUnsupported = () => {
+  console.log(`Unsupported`);
+};
+
 const getPaymentProcessor = (type) => {
   const processors = {
     paypal: processPaymentWithPayPal,
     stripe: processPaymentWithStripe,
   };
 
-  return processors[type];
+  return processors[type] || processPaymentUnsupported;
 };
 
 const processOrder = (paymentType, amount) => {
